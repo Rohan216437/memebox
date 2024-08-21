@@ -1,27 +1,29 @@
 import './App.css';
-import { BrowserRouter , Routes , Route , Link} from 'react-router-dom';
-import Daaru from './Components/Daaru'
+import Home from './Components/Home/Home';
+import Daaru from './Components/Meme/Daaru';
+import Contact from './Components/Meme/Contact';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />
+    },
+    {
+      path: "/daaru",
+      element: <Daaru />
+    },
+    {
+      path: "/contact",
+      element: <Contact />
+    },
+  ])
   return (
-    <BrowserRouter>
-    <div>
-      <Link to="/daaru">
-      <button>
-        Click here to go to this page
-      </button>
-      </Link>
-      <Link to="/">
-      <button>
-        Click here to go back to this page
-      </button>
-      </Link>
-    </div>
-
-      <Routes>
-        <Route path='/daaru' element={<Daaru />}/>
-      </Routes>
-    </BrowserRouter>
+    <>
+    <RouterProvider router={router}/>
+    </>
   );
 }
 
